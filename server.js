@@ -1,13 +1,15 @@
 const express = require('express');
-const helmet = require('helmet');
 
-// const carsRouter = require();
+const carsRouter = require("./cars/carsRouter");
 
 const server = express();
 
-server.use(helmet());
 server.use(express.json());
 
-// server.use('/api/cars', carsRouter);
+server.use('/api/cars', carsRouter);
+
+server.get("/", (request, response) => {
+    response.send("Let's go");
+  });
 
 module.exports = server;
